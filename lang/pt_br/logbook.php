@@ -30,3 +30,8 @@ $string['pluginadministration'] = 'Administração do Plugin ';
 $string['userpreferences'] = 'Configurações de Usuário';
 $string['clicktocontinue'] = 'Continuar';
 $string['modulename'] = 'Diário de Bordo';
+
+$string['specifcelements'] = 'Permitir Comentários';
+$string['none'] = 'Nenhum';
+$string['onlyteachers'] = 'Somente para professores';
+$string['userlog'] = 'Input diário';

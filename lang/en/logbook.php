@@ -31,7 +31,7 @@ $string['userpreferences'] = 'User Preferences';
 $string['clicktocontinue'] = 'Submit';
 $string['modulename'] = 'Logbook';
 
-$string['specifcelements'] = 'Permitir Comentários';
-$string['none'] = 'Nenhum';
-$string['onlyteachers'] = 'Somente para professores';
-$string['userlog'] = 'Input diário';
+$string['specifcelements'] = 'Allow Comments';
+$string['none'] = 'None';
+$string['onlyteachers'] = 'Only for professors';
+$string['userlog'] = 'Daily Input';
