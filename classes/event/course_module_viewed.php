@@ -15,40 +15,31 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Renderer class for template library.
+ * The mod_logbook course module viewed event.
  *
  * @package mod_logbook
- * @copyright  2024 Thomaz Machado {@link https://xfera.tech}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright 2013 Adrian Greeve <adrian@moodle.com>
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace mod_logbook\output;
 
-defined('MOODLE_INTERNAL') || die;
-
-use plugin_renderer_base;
-use renderable;
+namespace mod_logbook\event;
 
 /**
- * Renderer class for template library.
+ * The mod_logbook course module viewed event class.
  *
- * @package mod_logbook
- * @copyright  2024 Thomaz Machado {@link https://xfera.tech}
+ * @package    mod_logbook
+ * @since      Moodle 2.6
+ * @copyright  2013 Adrian Greeve
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class renderer extends plugin_renderer_base {
+class course_module_viewed extends \core\event\course_module_viewed {
 
     /**
-     * Defer the instance in course to template.
-     *
-     * @param renderable $page
-     *
-     * @return bool|string
-     *
-     * @throws \moodle_exception
+     * Init method.
      */
-    public function render_viewsubmission(renderable $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('mod_logbook/viewsubmission', $data);
-    }
+    protected function init() {
+        $this->data['objecttable'] = 'logbook';
 
+        parent::init();
+    }
 }

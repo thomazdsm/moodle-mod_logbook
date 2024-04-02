@@ -88,7 +88,6 @@ function logbook_has_submission($logbookid, $userid) {
         ['logbookid' => $logbookid, 'userid' => $userid]);
 }
 
-
 /**
  * Save the answer for the given logbook
  *
@@ -124,4 +123,47 @@ function logbook_save_answers($logbook, $answersrawdata, $course, $context, $cm)
 //    );
 //    $event = \mod_logbook\event\response_submitted::create($params);
 //    $event->trigger();
+}
+
+
+/**
+ * Returns HTML to display course category name.
+ *
+ * @return string
+ *
+ * @throws \moodle_exception
+ */
+function get_category($category): string {
+    $cat = core_course_category::get($category, IGNORE_MISSING);
+
+    if (!$cat) {
+        return '';
+    }
+
+    return $cat->get_formatted_name();
+}
+
+/**
+ * Mark the activity completed (if required) and trigger the course_module_viewed event.
+ *
+ * @param  stdClass $logbook     logbook object
+ * @param  stdClass $course     course object
+ * @param  stdClass $cm         course module object
+ * @param  stdClass $context    context object
+ * @param  string $viewed       which page viewed
+ * @since Moodle 3.0
+ */
+function logbook_view($logbook, $course, $cm, $context) {
+    $event = \mod_logbook\event\course_module_viewed::create(array(
+        'context' => $context,
+        'objectid' => $logbook->id
+    ));
+    $event->add_record_snapshot('course_modules', $cm);
+    $event->add_record_snapshot('course', $course);
+    $event->add_record_snapshot('logbook', $logbook);
+    $event->trigger();
+
+    // Completion.
+    $completion = new completion_info($course);
+    $completion->set_module_viewed($cm);
 }

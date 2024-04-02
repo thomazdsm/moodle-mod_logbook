@@ -35,3 +35,13 @@ $string['specifcelements'] = 'Permitir Comentários';
 $string['none'] = 'Nenhum';
 $string['onlyteachers'] = 'Somente para professores';
 $string['userlog'] = 'Input diário';
+
+$string['alertsuccess'] = 'Diário Escrito com Sucesso.';
+$string['emptydata'] = 'É necessário inserir algum texto!';
+$string['label'] = 'Escrever no Diário:';
+$string['titleh4'] = 'Histórico do Diário de Bordo';
+$string['nodataspan'] = 'Sem registros até o momento!';
+$string['author'] = 'Autor';
+$string['writtedin'] = 'Escrito em';
+$string['module'] = 'Módulo';
+$string['class'] = 'Turma';

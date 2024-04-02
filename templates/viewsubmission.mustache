@@ -1,0 +1,73 @@
+<form autocomplete="off" action="{{url}}" method="post" accept-charset="utf-8" class="mform" data-boost-form-errors-enhanced="1">
+    <div style="display: none;">
+        <input type="hidden" name="id" value="{{ cmid }}">
+        <input name="cmid" type="hidden" value="{{ cmid }}">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1"><b>{{ label }}</b></label>
+        <textarea class="form-control" id="id_userlog" name="userlog" rows="6"></textarea>
+    </div>
+
+    <div class="col-md-12 form-inline align-items-start felement" data-fieldtype="group">
+        <fieldset class="w-100 m-0 p-0 border-0">
+            <div class="d-flex flex-wrap align-items-center">
+                <div class="form-group fitem">
+                    <span data-fieldtype="submit">
+                        <input type="submit" class="btn btn-primary" name="submitbutton" id="id_submitbutton" value="Enviar" data-initial-value="Enviar">
+                    </span>
+                    <div class="form-control-feedback invalid-feedback" id="id_error_submitbutton">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-control-feedback invalid-feedback" id="fgroup_id_error_buttonar">
+        </div>
+    </div>
+</form>
+
+<div class="row mt-3">
+    <div class="col-lg-12 text-center">
+        <h4>{{ titleh4 }}</h4>
+    </div>
+    <div class="col-lg-12 text-center m-1">
+    {{#data}}
+        <button class="btn btn-primary m-1" type="button" data-toggle="collapse" data-target="#collapse{{id}}" aria-expanded="false" aria-controls="collapseExample">
+            {{timecreated}}
+        </button>
+    {{/data}}
+    {{^data}}
+        <span>{{ nodataspan }}</span>
+    {{/data}}
+    </div>
+    <div class="col-lg-12 align-center">
+    {{#data}}
+        <div class="collapse" id="collapse{{id}}">
+            <div class="card card-body m-1">
+                <span><b>{{ author }}: {{user}}</b></span>
+                <span><b>{{ writtedin }}: {{timecreated}}</b></span>
+                <span><b>{{ class }}: {{category}}</b></span>
+                <span><b>{{ module }}: {{coursename}}</b></span>
+                <hr>
+                <p style="">
+                    {{{ userlog }}}
+                </p>
+            </div>
+        </div>
+    {{/data}}
+    </div>
+</div>
+
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/dc3wrq75p9y44by91bogqwg7vwhaollr67vyg6tq4gpfzqkp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Inicialize o TinyMCE Editor após o carregamento completo da página
+        tinymce.init({
+            selector: 'textarea#id_userlog'
+        });
+    });
+</script>

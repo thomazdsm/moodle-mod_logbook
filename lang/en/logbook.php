@@ -35,3 +35,14 @@ $string['specifcelements'] = 'Allow Comments';
 $string['none'] = 'None';
 $string['onlyteachers'] = 'Only for professors';
 $string['userlog'] = 'Daily Input';
+
+$string['alertsuccess'] = 'Successfully Written Diary.';
+$string['emptydata'] = 'Some text is required!';
+$string['label'] = 'Write in the Diary:';
+$string['titleh4'] = 'Logbook History';
+$string['nodataspan'] = 'No records so far!';
+$string['author'] = 'Author';
+$string['writtedin'] = 'Written in';
+$string['module'] = 'Module';
+$string['class'] = 'Class';
+
