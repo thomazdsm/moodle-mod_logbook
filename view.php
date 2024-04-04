@@ -47,22 +47,22 @@ $PAGE->set_heading(format_string($course->fullname));
 
 $renderer = $PAGE->get_renderer('mod_logbook');
 
-// Admin or Teacher User.
-var_dump(has_capability('mod/logbook:viewadmin', $context));exit();
+// Render the activity information.
+$completiondetails = \core_completion\cm_completion_details::get_instance($cm, $USER->id);
+$activitydates = \core\activity_dates::get_dates_for_module($cm, $USER->id);
 
+// Admin or Teacher User.
 if (has_capability('mod/logbook:viewadmin', $context)) {
     require_capability('mod/logbook:viewadmin', $context);
 
+    $contentrenderable = new \mod_logbook\output\viewadmin($logbook, $context);
     echo $OUTPUT->header();
-    echo 'Is Admin or Teacher';
+    echo $OUTPUT->activity_information($cm, $completiondetails, $activitydates);
+    echo $renderer->render($contentrenderable);
     echo $OUTPUT->footer();
 
     return;
 }
-
-// Render the activity information.
-$completiondetails = \core_completion\cm_completion_details::get_instance($cm, $USER->id);
-$activitydates = \core\activity_dates::get_dates_for_module($cm, $USER->id);
 
 if ($_POST) {
     try {

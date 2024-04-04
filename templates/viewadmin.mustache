@@ -1,0 +1,35 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12" id="accordion">
+            {{#userdata}}
+                <div class="card m-1">
+                    <a class="d-block w-100" data-toggle="collapse" href="#user{{userid}}">
+                        <div class="card-header">
+                            <h4 class="card-title w-100">
+                                {{fullname}}
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="user{{userid}}" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            {{#useranswers}}
+                                <blockquote>
+                                    <span><b>{{ writtedin }}: {{datecreated}}</b></span><br>
+                                    <span><b>{{ class }}: {{category}}</b></span><br>
+                                    <span><b>{{ module }}: {{coursename}}</b></span><br>
+                                    <hr>
+                                    <p style="">
+                                        {{{answer}}}
+                                    </p>
+                                </blockquote>
+                            {{/useranswers}}
+                            {{^useranswers}}
+                                <small>Sem registros até o momento!</small>
+                            {{/useranswers}}
+                        </div>
+                    </div>
+                </div>
+            {{/userdata}}
+        </div>
+    </div>
+</section>

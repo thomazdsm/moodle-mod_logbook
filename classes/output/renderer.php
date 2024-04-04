@@ -51,4 +51,9 @@ class renderer extends plugin_renderer_base {
         return parent::render_from_template('mod_logbook/viewsubmission', $data);
     }
 
+    public function render_viewadmin(renderable $page) {
+        $data = $page->export_for_template($this);
+        return parent::render_from_template('mod_logbook/viewadmin', $data);
+    }
+
 }
